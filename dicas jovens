@@ -1,1 +1,35 @@
+import discord
+from discord.ext import commands
+import random
 
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'Bot Jovem Ecológico logado como {bot.user}')
+
+    
+
+@bot.command()
+async def dica_jovem(ctx):
+    dicas = [
+        "Galera, levem a própria garrafa de água para a escola em vez de comprar copinhos plásticos! 💧🥤",
+        "Vai jogar algo fora no quarto? Vê se não dá pra reciclar primeiro! Papel de rascunho salva árvores. 🌳✏️",
+        "Apague a luz quando sair do quarto e tire os carregadores da tomada quando não estiver usando! ⚡🔌"
+        "Não jogue lixo no chão🚯"
+        "adotar os 3Rs♻️"
+    ]
+    await ctx.send(random.choice(dicas))
+
+@bot.command()
+async def desafio(ctx):
+    desafios = [
+        "Desafio de hoje: Diga NÃO a qualquer canudo de plástico! 🐢",
+        "Desafio de hoje: Tome um banho 2 minutos mais rápido ouvindo sua música favorita! 🚿🎵"
+        "Desafio de hoje: Reutilize o lixo reciclável♻️🚮"
+    ]
+    await ctx.send(f"🔥 {random.choice(desafios)}")
+
+bot.run("O TOKEN DO DISCORD)
